@@ -1,4 +1,4 @@
-require_relative '../models/entry'
+require_relative '../models/entry.rb'
 
 RSpec.describe Entry do
   describe "attributes" do
