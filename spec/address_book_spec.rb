@@ -6,9 +6,9 @@ RSpec.describe AddressBook do
 
 # Create helper method to consolidate redundant code
   def check_entry(entry, expected_name, expected_number, expected_email)
-    expect(entry.name).to eql expected_name
-    expect(entry.phone_number).to eql expected_number
-    expect(entry.email).to eql expected_email
+    expect(entry.name).to eq expected_name
+    expect(entry.phone_number).to eq expected_number
+    expect(entry.email).to eq expected_email
   end
 
   describe "attributes" do
@@ -107,6 +107,41 @@ end
 
      check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
    end
+end
+# ASSIGNMENT:Adding additional tests that will use data from a new csv
+ describe "#import_from_new_csv" do
+    it "imports the correct number of entries" do
 
- end
+     book.import_from_csv("entries_2.csv")
+     book_size = book.entries.size
+
+     #Check the size of the entries in AddressBook
+     expect(book_size).to eq 3
+   end
+
+    it "imports the 1st entry" do
+     book.import_from_csv("entries_2.csv")
+     #Check the first Entry
+     entry_one = book.entries[0]
+
+     # helper method consolidated code
+     check_entry(entry_one, "Adriana", "787-473-1999", "adri@gmail.com")
+   end
+
+   it "imports the 2nd entry" do
+     book.import_from_csv("entries_2.csv")
+     # Check the second entry
+     entry_two = book.entries[1]
+
+     check_entry(entry_two, "Alberto", "787-473-3402", "alberto@gmail.com")
+   end
+
+   it "imports the 3rd entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the third entry
+       entry_three = book.entries[2]
+
+       check_entry(entry_three, "Karen", "787-448-4033","kai@gmail.com")
+     end
+   end
 end
