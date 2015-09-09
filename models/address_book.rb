@@ -29,6 +29,7 @@ class AddressBook
       end
       index += 1
     end
+    # puts "Adding #{name}, #{phone_number}, #{email}"
     @entries.insert(index, Entry.new(name, phone_number, email))
   end
 
@@ -39,6 +40,8 @@ class AddressBook
 
     csv.each do |row|
       row_hash = row.to_hash
+      # puts "Row to add: #{row_hash}"
+      # puts "Phone: #{row_hash[:phone_number].inspect}"
       add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
     end
   end
