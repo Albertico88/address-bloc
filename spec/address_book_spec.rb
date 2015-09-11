@@ -11,6 +11,16 @@ RSpec.describe AddressBook do
     expect(entry.email).to eq expected_email
   end
 
+  describe "#nuke" do
+    it "should delete all entries from AddressBook" do
+      book.add_entry("Ada Lovelace", "012.345.6789", "augusta.king@lovelace.com")
+      book.add_entry("Ada Lovelace", "012.345.6789", "augusta.king@lovelace.com")
+
+      book.nuke
+      expect(book.entries.size).to eq 0
+  end
+end
+
   describe "attributes" do
     it "should respond to entries" do
       expect(book).to respond_to(:entries)
